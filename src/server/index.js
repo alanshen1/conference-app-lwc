@@ -39,15 +39,16 @@ module.exports = app => {
                 /* Work with result data */
                 const formattedData = result.records.map(sessionRecord => {
                     let speakers = [];
-                    if(sessionRecord.Session_Speakers__r){
+                    if (sessionRecord.Session_Speakers__r) {
                         speakers = sessionRecord.Session_Speakers__r.records.map(
                             record => {
                                 return {
                                     id: record.Speaker__r.Id,
-                                    pictureUrl: record.Speaker__r.Picture_URl__c,
+                                    pictureUrl:
+                                        record.Speaker__r.Picture_URl__c,
                                     name: record.Speaker__r.Name,
                                     email: record.Speaker__r.Email,
-                                    bio: record.Speaker__r.Description,
+                                    bio: record.Speaker__r.Description
                                 };
                             }
                         );
@@ -65,5 +66,4 @@ module.exports = app => {
             }
         });
     });
-
 };
